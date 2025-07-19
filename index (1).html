@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivakant Mishra | Machine Learning Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        section {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .glow-text {
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+        }
+        .animated-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .animated-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans bg-gray-900 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMiIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]">
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" class="fixed right-4 top-4 z-50 p-2 rounded-full bg-gray-800 text-white shadow-lg">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900/80 shadow-sm z-40 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-blue-600">Shivakant Mishra</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-blue-600 transition">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-blue-600 transition">Skills</a>
+                    <a href="#certifications" class="text-gray-700 hover:text-blue-600 transition">Certifications</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="#projects" class="block py-2 text-gray-700 hover:text-blue-600 transition">Projects</a>
+            <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-600 transition">Skills</a>
+            <a href="#certifications" class="block py-2 text-gray-700 hover:text-blue-600 transition">Certifications</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 glow-text">Shivakant Mishra</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-blue-400 mb-4 glow-text">Aspiring Machine Learning Engineer</h2>
+                    <p class="text-lg text-gray-600 mb-8">"Building intelligent systems to solve real-world problems."</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-blue-600 text-white rounded-lg animated-button">View Resume</a>
+                        <a href="https://github.com/" target="_blank" class="px-6 py-3 bg-gray-800 text-white rounded-lg animated-button">GitHub</a>
+                        <a href="#contact" class="px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg animated-button">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 bg-blue-100 rounded-full overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-blue-200 flex items-center justify-center">
+                            <span class="text-6xl font-bold text-blue-600">SM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-900/70 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-100 shadow-lg">
+                        <div class="w-full h-full bg-blue-50 flex items-center justify-center">
+                            <i class="fas fa-user text-6xl text-blue-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg text-gray-700 mb-4">
+                        I'm a passionate Machine Learning enthusiast currently pursuing my B.E. in Computer Science from GTU. 
+                        My journey in AI/ML began with a curiosity about how machines can learn from data and make intelligent decisions.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4">
+                        I specialize in building end-to-end machine learning solutions - from data collection and preprocessing to model 
+                        development and deployment. My focus is on creating practical ML applications that solve real business problems.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        When I'm not training models, you can find me contributing to open-source projects, participating in Kaggle competitions, 
+                        or exploring the latest advancements in deep learning architectures.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTAgMEgxMDBWMTAwSDBWMHoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMTAwIDBIMHYxMDBtMTAwLTEwMEgwdjEwME0xMDAgMEgwdjEwME0xMDAgMEgwdjEwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9Ii4xIi8+PC9zdmc+')]"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+            
+            <!-- Project Filter -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-full filter-btn active" data-filter="all">All</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 filter-btn" data-filter="computer-vision">Computer Vision</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 filter-btn" data-filter="nlp">NLP</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 filter-btn" data-filter="anomaly-detection">Anomaly Detection</button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-800 bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-700 transition-all duration-300 hover:border-blue-400" data-tags="computer-vision">
+                    <div class="h-48 bg-gradient-to-r from-green-100 to-blue-100 flex items-center justify-center">
+                        <i class="fas fa-leaf text-6xl text-green-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">EcoGuardian</h3>
+                        <p class="text-gray-600 mb-4">AI-powered environmental monitoring system using image classification to detect pollution levels and ecological changes.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#TensorFlow</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#OpenCV</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#FastAPI</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300" data-tags="nlp">
+                    <div class="h-48 bg-gradient-to-r from-purple-100 to-pink-100 flex items-center justify-center">
+                        <i class="fas fa-user-secret text-6xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fake Insta ID Detector</h3>
+                        <p class="text-gray-600 mb-4">Social media fraud detection system that identifies fake profiles using classification models and NLP techniques.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#scikit-learn</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#NLTK</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#Streamlit</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300" data-tags="anomaly-detection">
+                    <div class="h-48 bg-gradient-to-r from-yellow-100 to-red-100 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-yellow-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Financial Anomaly Detection</h3>
+                        <p class="text-gray-600 mb-4">Fraud prediction system for banking transactions using anomaly detection algorithms to identify suspicious activities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#PyTorch</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#Pandas</span>
+                            <span class="tag px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">#Flask</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTAgMEgxMDBWMTAwSDBWMHoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMTAwIDBIMHYxMDBtMjAtMjBIMHYxMDBtMjAtMjBIMHYxMDBtMjAtMjBIMHYxMDBtMjAtMjBIMHYxMDBtMjAtMjBIMHYxMDAiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMSIvPjwvc3ZnPg==')] animate-[move_30s_linear_infinite]"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Languages -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 flex items-center">
+                        <i class="fas fa-code mr-2"></i> Languages
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Python</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">SQL</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">R</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Libraries & Tools -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 flex items-center">
+                        <i class="fas fa-tools mr-2"></i> Libraries & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">scikit-learn</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">TensorFlow</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">PyTorch</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Pandas</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">NumPy</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Matplotlib</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Seaborn</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">FastAPI</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Flask</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Streamlit</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Jupyter</span>
+                    </div>
+                </div>
+                
+                <!-- ML Concepts -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 flex items-center">
+                        <i class="fas fa-brain mr-2"></i> ML Concepts
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Supervised Learning</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Unsupervised Learning</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Feature Engineering</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">EDA</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Model Evaluation</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Hyperparameter Tuning</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Anomaly Detection</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Computer Vision</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">NLP</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">Model Deployment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTAgMEgxMDBWMTAwSDBWMHoiIGZpbGw9Im5vbmUiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxIiBmaWxsPSIjMDAwIiBvcGFjaXR5PSIuMSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiIGZpbGw9IiMwMDAiIG9wYWNpdHk9Ii4xIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMSIgZmlsbD0iIzAwMCIgb3BhY2l0eT0iLjEiLz48Y2lyY2xlIGN4PSI3MCIgY3k9IjcwIiByPSIxIiBmaWxsPSIjMDAwIiBvcGFjaXR5PSIuMSIvPjxjaXJjbGUgY3g9IjkwIiBjeT0iOTAiIHI9IjEiIGZpbGw9IiMwMDAiIG9wYWNpdHk9Ii4xIi8+PC9zdmc+')]"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Certifications</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Certification 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fundamentals of AI</h3>
+                    <p class="text-gray-600 mb-3">Guvi (2023)</p>
+                    <p class="text-gray-700">Comprehensive course covering the foundational concepts of Artificial Intelligence and Machine Learning.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">View Credential</a>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Data Science Specialization</h3>
+                    <p class="text-gray-600 mb-3">Coursera (2025)</p>
+                    <p class="text-gray-700">10-course specialization covering data science concepts, tools, and techniques including machine learning.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">View Credential</a>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Data Science Job Simulation</h3>
+                    <p class="text-gray-600 mb-3">Shivakant Mishra</p>
+                    <p class="text-gray-700">Practical simulation of real-world data science tasks including data cleaning, analysis, and model building.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">View Credential</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTAgMEgxMDBWMTAwSDBWMHoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMCA1MEMyMCAzMCA0MCA0MCA2MCAzMEM4MCAyMCAxMDAgMzAgMTAwIDUwQzEwMCA3MCA4MCA4MCA2MCA3MEM0MCA2MCAyMCA3MCAwIDUwWiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9Ii4xIiBmaWxsPSJub25lIi8+PC9zdmc+')]"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Email</h4>
+                                <a href="mailto:shivakant@example.com" class="text-gray-600 hover:text-blue-600">shivakant@example.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-file-pdf text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Resume</h4>
+                                <a href="#" class="text-gray-600 hover:text-blue-600">Download PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fab fa-linkedin text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">LinkedIn</h4>
+                                <a href="#" target="_blank" class="text-gray-600 hover:text-blue-600">linkedin.com/in/shivakant</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fab fa-github text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">GitHub</h4>
+                                <a href="#" target="_blank" class="text-gray-600 hover:text-blue-600">github.com/shivakant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                            <input type="text" id="subject" name="subject" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold">Shivakant Mishra</span>
+                    <p class="text-gray-400 mt-1">Machine Learning Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-kaggle fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Shivakant Mishra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            html.classList.remove('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Project filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active', 'bg-blue-600', 'text-white'));
+                btn.classList.add('active', 'bg-blue-600', 'text-white');
+                
+                const filter = btn.dataset.filter;
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.tags.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {threshold: 0.1});
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Mystery234/shivakant-portifolio" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
